@@ -1,0 +1,46 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#wrap{
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -200px;
+  padding: 50px 0 50px;
+  overflow: hidden;
+
+}
+
+footer {
+  padding: 50px 0;
+  background-color: #f8f8f8;
+  height: 80px;
+}
+
+p.copyright {
+  margin: 15px 0 0;
+}
+
+#footer-button{
+  background: #D8D8D8;
+  width: 150px;
+}
+
+.navbar-header {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+}
+.navbar-brand {
+  float:none;
+  font-size: 1.5em;
+  &:hover{
+    border-bottom: 3px solid black;
+  }
+}
