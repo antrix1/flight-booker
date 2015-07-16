@@ -4,14 +4,16 @@
   $('#success-notice').html("<%= j render 'shared/flash_messages' %>").hide().fadeIn();
   $('#errors_for_form').hide();
 
+window.setTimeout(function() {
+    window.location.href = "<%= booking_path(@booking) %>";
+}, 5000);
+
 <% else %>
 
   $('#errors_for_form').html("<%= j render 'shared/error_messages', object: @booking %>");
 
-<% if params[:passenger_count].to_i > 1 %>
     $('html,body').animate({
         scrollTop: $("#errors_for_form").offset().top
 });
 
-<% end %>
 <% end %>
