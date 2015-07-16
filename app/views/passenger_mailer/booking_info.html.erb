@@ -1,0 +1,7 @@
+<h1>Hello <%= @passenger.name %></h1>
+
+<p>
+  Thank you for choosing Odin-Flight-Booker. You can see your flight info by clicking the link below.
+</p>
+
+<%= link_to "Booking Info", booking_path(@passenger.bookings.last) %>

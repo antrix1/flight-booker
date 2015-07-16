@@ -32,7 +32,7 @@
                   </tbody>
                 </table>
                 <%= hidden_field_tag :passenger_count, params[:flight][:passengers] %>
-                <%= submit_tag("Order", class: "form-control btn btn-primary btn-block search-btn") %>
+                <%= submit_tag("Order", class: "form-control btn btn-primary btn-block search-btn", id: 'order-btn') %>
               </div>
             </div>
         <% end %>

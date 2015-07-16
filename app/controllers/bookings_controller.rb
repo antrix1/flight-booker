@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(whitelist_params)
     respond_to do |format|
       if @booking.save
+        @booking.passengers.each do |passenger|
+          PassengerMailer.booking_info(passenger).deliver_now
+        end
         flash.now[:success] = "Booking successful. You will be redirected to your booking info now."
         format.html {redirect_to root_url}
         format.js { }
