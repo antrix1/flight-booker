@@ -1,38 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 airports = {:NYC => "New York",
-           :SFO => "San Francisco",
-           :LON => "London",
-           :LPL => "Liverpool",
-           :BEG => "Belgrade",
-           :BER => "Berlin",
-           :ZRH => "Zurich"
+            :SFO => "San Francisco",
+            :LON => "London",
+            :LPL => "Liverpool",
+            :BEG => "Belgrade",
+            :BER => "Berlin",
+            :ZRH => "Zurich"
 }
 
 airports.each do |k, v|
-    Airport.create(code: k, city: v)
+  Airport.create(code: k, city: v)
 end
 
 all_airports = Airport.all
 
-all_airports.each_with_index do |airport, index|
-  Flight.create(date: rand(20.days).seconds.from_now,
-                departure_airport_id: airport.id,
-                destination_airport_id: all_airports[index+1].id,
-                price: rand(200..1000)) if index < all_airports.length - 1
+
+index = airports.length - 1
+
+200.times do
+  departure_airport = all_airports[rand(0..index)].id
+  destination_airport = all_airports[rand(1..index)].id
+  Flight.create(date: rand(5.days).seconds.from_now,
+                departure_airport_id: departure_airport,
+                destination_airport_id: destination_airport,
+                price: rand(200..1000)) if departure_airport != destination_airport
 end
-
-
-
-all_airports.to_a.reverse!.each_with_index do |airport, index|
-Flight.create(date: rand(20.days).seconds.from_now,
-              departure_airport_id: airport.id,
-              destination_airport_id: all_airports[index+1].id,
-              price: rand(200..1000)) if index < all_airports.length - 1
-  end

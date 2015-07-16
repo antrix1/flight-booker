@@ -1,0 +1,86 @@
+<div class="col-md-10 col-md-offset-1" id="search-form">
+  <h1 class="text-center">Search for flights: </h1><br/>
+  <%= form_for @flight, html: {method: :get} do |f| %>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-2 text-center">
+          <%= f.label :from_airport %>
+          <%= f.select(:from_airport, @airports, {}, {:class => 'form-control', id: 'from_airport'}) %><br/>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <%= f.label :to_airport %>
+          <%= f.select(:to_airport, @airports, {}, {:class => 'form-control', id: 'to_airport'}) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-2 text-center">
+          <%= f.label :date %>
+          <%= f.select(:date, @dates, {}, {:class => 'form-control'}) %>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <%= f.label :passengers %>
+          <%= f.select(:passengers, @passengers, {}, {:class => 'form-control'}) %>
+        </div>
+      </div>
+      <br/>
+      <br/>
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.submit "Search", id: 'search-btn', class: 'form-control btn btn-primary btn-block' %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<% if !@flights.nil? %>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2" style="margin-top:100px;">
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Flight ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Passengers</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @flights.each do |f| %>
+              <tr>
+                <td><%= f.id %></td>
+                <td><%= f.date.strftime("%d/%m/%Y") %></td>
+                <td><%= f.date.strftime("%H:%m") %></td>
+                <td><%= params[:flight][:passengers] %></td>
+                <td><%= f.from_airport.code %></td>
+                <td><%= f.to_airport.code %></td>
+                <td><%= f.price %></td>
+              </tr>
+
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+
+    $from = $('#from_airport option:selected').text();
+    $to = $('#to_airport option:selected').text();
+
+    $('#search-btn').click(function(){
+        if ($from == $to){
+            alert("Can't fly to the same city");
+        }
+    });
+
+
+
+</script>

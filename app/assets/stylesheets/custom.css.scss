@@ -5,9 +5,10 @@ body,
 html {
   width: 100%;
   height: 100%;
+  //overflow: hidden;
 }
 
-#wrap{
+#wrap {
   min-height: 100%;
   height: auto;
   margin: 0 auto -200px;
@@ -26,7 +27,7 @@ p.copyright {
   margin: 15px 0 0;
 }
 
-#footer-button{
+#footer-button {
   background: #D8D8D8;
   width: 150px;
 }
@@ -37,10 +38,26 @@ p.copyright {
   text-align: center;
   width: 100%;
 }
+
 .navbar-brand {
-  float:none;
+  float: none;
   font-size: 1.5em;
-  &:hover{
+  &:hover {
     border-bottom: 3px solid black;
+  }
+}
+
+#search-form {
+  border: 1px solid black;
+  padding-bottom: 40px;
+  padding-top: 15px;
+  border-radius: 20px;
+  background: rgb(240, 240, 240);
+}
+
+#search-btn {
+  background: #373333;
+  &:hover{
+    background: black;
   }
 }
