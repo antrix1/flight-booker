@@ -7,11 +7,11 @@ class FlightsController < ApplicationController
 
 
     if !params[:flight].nil?
-      from = params[:flight][:from_airport]
-      to = params[:flight][:to_airport]
-      date = params[:flight][:date]
-
-      @flights = Flight.search(from, to, date)
+      @from = params[:flight][:from_airport]
+      @to = params[:flight][:to_airport]
+      @date = params[:flight][:date]
+      @passengers_select = params[:flight][:passengers]
+      @flights = Flight.search(@from, @to, @date)
     end
 
   end

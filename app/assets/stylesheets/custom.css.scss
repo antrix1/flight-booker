@@ -55,9 +55,15 @@ p.copyright {
   background: rgb(240, 240, 240);
 }
 
-#search-btn {
+.search-btn {
+  color: white;
+  border: gray;
   background: #373333;
   &:hover{
     background: black;
+  }
+  &:active{
+    background: black;
+    border: gray;
   }
 }
