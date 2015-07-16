@@ -29,10 +29,12 @@
 </div>
 
 <% passenger_count = 1 %>
-
+<br/>
+<div id="errors_for_form" class="col-md-6 col-md-offset-3" style="padding-top: 20px;"></div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for @booking do |booking| %><br/>
+
+  <div class="col-md-6 col-md-offset-3" id="booking-form">
+    <%= form_for @booking, remote: true do |booking| %><br/>
 
 
         <%= booking.fields_for :passengers do |passenger| %>

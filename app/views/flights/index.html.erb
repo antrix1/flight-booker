@@ -1,6 +1,6 @@
 <div class="col-md-10 col-md-offset-1" id="search-form">
   <h1 class="text-center">Search for flights: </h1><br/>
-  <%= form_for @flight, html: {method: :get} do |f| %>
+  <%= form_for @flight, html: {method: :get}, remote: true do |f| %>
       <div class="row">
         <div class="col-md-4 col-md-offset-2 text-center">
           <%= f.label :from_airport %>
@@ -35,46 +35,10 @@
       </div>
   <% end %>
 </div>
+<br/>
+<div id="results" style="display: none;">
 
-<% if !@flights.nil? %>
-
-    <%= form_tag new_booking_path, method: :get do %>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2" style="margin-top:100px;">
-            <table class="table table-striped table-bordered">
-              <thead>
-              <tr>
-                <th></th>
-                <th>Flight ID</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Passengers</th>
-                <th>Departure</th>
-                <th>Destination</th>
-                <th>Price</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @flights.each do |f| %>
-                  <tr>
-                    <td><%= radio_button_tag(:flight_selected, f.id, checked: f) %></td>
-                    <td><%= f.id %></td>
-                    <td><%= f.date.strftime("%d/%m/%Y") %></td>
-                    <td><%= f.date.strftime("%H:%m") %></td>
-                    <td><%= params[:flight][:passengers] %></td>
-                    <td><%= f.from_airport.code %></td>
-                    <td><%= f.to_airport.code %></td>
-                    <td><%= f.price %> &euro;</td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-            <%= hidden_field_tag :passenger_count, params[:flight][:passengers] %>
-            <%= submit_tag("Order", class: "form-control btn btn-primary btn-block search-btn") %>
-          </div>
-        </div>
-    <% end %>
-<% end %>
+</div>
 
 <script type="text/javascript">
 

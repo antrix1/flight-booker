@@ -9,12 +9,20 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(whitelist_params)
-    if @booking.save
-      redirect_to root_url
-    else
-      render :back
-    end
+    respond_to do |format|
+      if @booking.save
 
+        format.html {redirect_to root_url}
+        format.js {render js: %(window.location.href='#{booking_path @booking}'); flash[:success] = "Booking successful" }
+      else
+        format.js
+      end
+
+    end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private

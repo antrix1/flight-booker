@@ -12,6 +12,11 @@ class FlightsController < ApplicationController
       @date = params[:flight][:date]
       @passengers_select = params[:flight][:passengers]
       @flights = Flight.search(@from, @to, @date)
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 
   end
