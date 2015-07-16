@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @flight = @booking.flight
   end
 
   private
