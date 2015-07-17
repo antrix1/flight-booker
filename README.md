@@ -11,5 +11,5 @@ A typical airline booking flow:
 
 Step 4 would be done via integration of something like Paypal, via a gem or an SDK or Stripe.
 
-##[Click here to view in the browser]('#')
+##[Click here to view in the browser](https://blooming-mountain-4761.herokuapp.com/)
 
